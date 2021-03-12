@@ -36,7 +36,6 @@ public class nexoEpidemiologico extends AppCompatActivity {
         continuarBtn2.setOnClickListener(
                 (v) -> {
                     nexoCalification(contacto);
-                    nexoCalification(ninguno);
                     nexoCalification(viajeNac);
                     nexoCalification(viajeInt);
                     nexoCalification(trabSal);

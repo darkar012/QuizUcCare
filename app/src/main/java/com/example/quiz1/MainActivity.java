@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("encuesta", MODE_PRIVATE);
         String usuarios = preferences.getString("nombre+calificacion", "no hay encuestados");
         listaRegis.setText(usuarios);
-        Log.e(">>>", usuarios);
     }
 
     @Override

@@ -45,7 +45,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="200dp"
-        android:textAlignment="viewStart"
+        android:textAlignment="textStart"
         android:textColor="#3E3A3A"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/registrarBtn"

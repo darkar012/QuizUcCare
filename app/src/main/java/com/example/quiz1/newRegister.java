@@ -36,7 +36,7 @@ public class newRegister extends AppCompatActivity {
                         i.putExtra("name", name);
                         i.putExtra("id", ide);
                         startActivity(i);
-finish();
+                        finish();
                     }
                 }
         );
@@ -58,7 +58,8 @@ finish();
                 }
             }
         }
-        String usuarios = getSharedPreferences("encuesta",MODE_PRIVATE).getString("encuestados", "");
+        String usuarios = getSharedPreferences("encuesta", MODE_PRIVATE).getString("encuestados", "");
+        Log.e(">>>", usuarios);
         if (usuarios.contains(ide)) {
             Toast.makeText(this, "Esta persona ya fue registrada", Toast.LENGTH_LONG).show();
             noNumber = false;

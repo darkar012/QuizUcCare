@@ -12,13 +12,14 @@ public class sintomas extends AppCompatActivity {
     private CheckBox fiebre, dolorG, congestionNasal, tos, fatiga, difRespirar, ninguno;
     private int nexoR, sintomasR;
     private boolean yaSumo;
-    private String nombre,ide;
+    private String nombre, ide;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sintomas);
 
-        continuarBtn3=findViewById(R.id.continuarBtn3);
+        continuarBtn3 = findViewById(R.id.continuarBtn3);
         fiebre = findViewById(R.id.fiebre);
         dolorG = findViewById(R.id.dolorG);
         congestionNasal = findViewById(R.id.congesN);
@@ -36,25 +37,24 @@ public class sintomas extends AppCompatActivity {
         continuarBtn3.setEnabled(false);
 
         continuarBtn3.setOnClickListener(
-                (v)->{
+                (v) -> {
                     sintomasCalification(fiebre);
                     sintomasCalification(dolorG);
                     sintomasCalification(congestionNasal);
                     sintomasCalification(tos);
                     sintomasCalification(fatiga);
                     sintomasCalification(difRespirar);
-                    sintomasCalification(ninguno);
 
                     SharedPreferences preferences = getSharedPreferences("encuesta", MODE_PRIVATE);
                     int total = nexoR + sintomasR;
                     String calification = String.valueOf(total);
                     String nombreS = preferences.getString("nombre+calificacion", "");
-                    String userS = preferences.getString("nombre+calificacion", "");
-                    String usuario = nombre + ", "+ ide + ", "+ calification + "\n";
-                    String nombreCal = nombre + ", "+ calification + "\n";
+                    String userS = preferences.getString("encuestados", "");
+                    String usuario = nombre + ", " + ide + ", " + calification + "\n";
+                    String nombreCal = nombre + ", " + calification + "\n";
                     preferences.edit().putString("nombre+calificacion", nombreS + nombreCal).apply();
                     preferences.edit().putString("encuestados", userS + usuario).apply();
-finish();
+                    finish();
                 }
         );
 
@@ -63,10 +63,10 @@ finish();
     private void sintomasCalification(CheckBox check) {
         yaSumo = false;
         if (check.isChecked() && !yaSumo) {
-            sintomasR = sintomasR + 3;
+            sintomasR = sintomasR + 4;
             yaSumo = true;
         } else if (yaSumo) {
-            sintomasR = sintomasR - 3;
+            sintomasR = sintomasR - 4;
             yaSumo = false;
         }
     }
