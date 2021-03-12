@@ -48,11 +48,13 @@ public class sintomas extends AppCompatActivity {
                     SharedPreferences preferences = getSharedPreferences("encuesta", MODE_PRIVATE);
                     int total = nexoR + sintomasR;
                     String calification = String.valueOf(total);
-                    String nombreCal = nombre + ", "+ calification + "\n";
+                    String nombreS = preferences.getString("nombre+calificacion", "");
+                    String userS = preferences.getString("nombre+calificacion", "");
                     String usuario = nombre + ", "+ ide + ", "+ calification + "\n";
-                    preferences.edit().putString("nombre+calificacion", nombreCal).apply();
-                    preferences.edit().putString("encuestados", usuario).apply();
-
+                    String nombreCal = nombre + ", "+ calification + "\n";
+                    preferences.edit().putString("nombre+calificacion", nombreS + nombreCal).apply();
+                    preferences.edit().putString("encuestados", userS + usuario).apply();
+finish();
                 }
         );
 
@@ -63,7 +65,7 @@ public class sintomas extends AppCompatActivity {
         if (check.isChecked() && !yaSumo) {
             sintomasR = sintomasR + 3;
             yaSumo = true;
-        } else {
+        } else if (yaSumo) {
             sintomasR = sintomasR - 3;
             yaSumo = false;
         }
@@ -73,10 +75,21 @@ public class sintomas extends AppCompatActivity {
         new Thread(
                 () -> {
                     while (true) {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         if (fiebre.isChecked() || dolorG.isChecked() || congestionNasal.isChecked() || tos.isChecked() || fatiga.isChecked() || difRespirar.isChecked() || ninguno.isChecked()) {
                             runOnUiThread(
                                     () -> {
                                         continuarBtn3.setEnabled(true);
+                                    }
+                            );
+                        } else {
+                            runOnUiThread(
+                                    () -> {
+                                        continuarBtn3.setEnabled(false);
                                     }
                             );
                         }

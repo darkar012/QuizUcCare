@@ -36,7 +36,7 @@ public class newRegister extends AppCompatActivity {
                         i.putExtra("name", name);
                         i.putExtra("id", ide);
                         startActivity(i);
-
+finish();
                     }
                 }
         );
@@ -45,7 +45,6 @@ public class newRegister extends AppCompatActivity {
     protected void validation() {
         noNumber = true;
         if (name == null || name.isEmpty() || ide == null || ide.isEmpty()) {
-            Log.e(">>>", "entro");
             Toast.makeText(this, "Hay campos vacios", Toast.LENGTH_LONG).show();
             noNumber = false;
         } else {
@@ -59,10 +58,10 @@ public class newRegister extends AppCompatActivity {
                 }
             }
         }
-        /*String usuarios = getSharedPreferences("encuesta",MODE_PRIVATE).getString("encuestados", "");
+        String usuarios = getSharedPreferences("encuesta",MODE_PRIVATE).getString("encuestados", "");
         if (usuarios.contains(ide)) {
             Toast.makeText(this, "Esta persona ya fue registrada", Toast.LENGTH_LONG).show();
             noNumber = false;
-        }*/
+        }
     }
 }

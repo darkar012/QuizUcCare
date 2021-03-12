@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class nexoEpidemiologico extends AppCompatActivity {
     private Button continuarBtn2;
     private CheckBox contacto, ninguno, viajeInt, viajeNac, trabSal;
-    private String name,ide;
+    private String name, ide;
     private int nexoR;
     private boolean yaSumo;
 
@@ -33,8 +33,6 @@ public class nexoEpidemiologico extends AppCompatActivity {
 
         isCheckboxClicked();
 
-        continuarBtn2.setEnabled(false);
-
         continuarBtn2.setOnClickListener(
                 (v) -> {
                     nexoCalification(contacto);
@@ -43,12 +41,12 @@ public class nexoEpidemiologico extends AppCompatActivity {
                     nexoCalification(viajeInt);
                     nexoCalification(trabSal);
 
-                    Log.e(">>>", ""+nexoR);
+                    Log.e(">>>", "" + nexoR);
 
                     Intent i = new Intent(this, sintomas.class);
                     i.putExtra("nexoCal", nexoR);
                     i.putExtra("name", name);
-                    i.putExtra("id",ide);
+                    i.putExtra("id", ide);
                     startActivity(i);
                     finish();
                 }
@@ -56,13 +54,25 @@ public class nexoEpidemiologico extends AppCompatActivity {
     }
 
     public void isCheckboxClicked() {
+        continuarBtn2.setEnabled(false);
         new Thread(
                 () -> {
                     while (true) {
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                         if (contacto.isChecked() || ninguno.isChecked() || viajeInt.isChecked() || viajeNac.isChecked() || trabSal.isChecked()) {
                             runOnUiThread(
                                     () -> {
                                         continuarBtn2.setEnabled(true);
+                                    }
+                            );
+                        } else {
+                            runOnUiThread(
+                                    () -> {
+                                        continuarBtn2.setEnabled(false);
                                     }
                             );
                         }
@@ -74,10 +84,10 @@ public class nexoEpidemiologico extends AppCompatActivity {
 
     public void nexoCalification(CheckBox check) {
         yaSumo = false;
-        if (check.isChecked() && !yaSumo) {
+        if (check.isChecked()) {
             nexoR = nexoR + 3;
             yaSumo = true;
-        } else {
+        } else if (yaSumo) {
             nexoR = nexoR - 3;
             yaSumo = false;
         }

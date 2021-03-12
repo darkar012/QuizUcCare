@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("encuesta", MODE_PRIVATE);
         String usuarios = preferences.getString("nombre+calificacion", "no hay encuestados");
         listaRegis.setText(usuarios);
+        Log.e(">>>", usuarios);
     }
 
     @Override
