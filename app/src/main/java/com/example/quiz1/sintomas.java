@@ -84,12 +84,14 @@ public class sintomas extends AppCompatActivity {
                             runOnUiThread(
                                     () -> {
                                         continuarBtn3.setEnabled(true);
+                                        continuarBtn3.setBackgroundResource(R.drawable.buttonedit);
                                     }
                             );
                         } else {
                             runOnUiThread(
                                     () -> {
                                         continuarBtn3.setEnabled(false);
+                                        continuarBtn3.setBackgroundResource(R.drawable.buttoneditno);
                                     }
                             );
                         }

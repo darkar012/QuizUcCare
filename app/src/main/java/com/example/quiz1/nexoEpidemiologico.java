@@ -3,6 +3,7 @@ package com.example.quiz1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -54,6 +55,7 @@ public class nexoEpidemiologico extends AppCompatActivity {
 
     public void isCheckboxClicked() {
         continuarBtn2.setEnabled(false);
+        continuarBtn2.setBackgroundResource(R.drawable.buttoneditno);
         new Thread(
                 () -> {
                     while (true) {
@@ -66,12 +68,15 @@ public class nexoEpidemiologico extends AppCompatActivity {
                             runOnUiThread(
                                     () -> {
                                         continuarBtn2.setEnabled(true);
+                                        continuarBtn2.setBackgroundResource(R.drawable.buttonedit);
+
                                     }
                             );
                         } else {
                             runOnUiThread(
                                     () -> {
                                         continuarBtn2.setEnabled(false);
+                                        continuarBtn2.setBackgroundResource(R.drawable.buttoneditno);
                                     }
                             );
                         }
