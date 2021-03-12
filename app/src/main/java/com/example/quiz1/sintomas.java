@@ -50,8 +50,8 @@ public class sintomas extends AppCompatActivity {
                     String calification = String.valueOf(total);
                     String nombreS = preferences.getString("nombre+calificacion", "");
                     String userS = preferences.getString("encuestados", "");
-                    String usuario = nombre + ", " + ide + ", " + calification + "\n";
-                    String nombreCal = nombre + ", " + calification + "\n";
+                    String usuario = nombre + ", " + ide + ", " + calification + " \n";
+                    String nombreCal = nombre + ", " + calification + " \n";
                     preferences.edit().putString("nombre+calificacion", nombreS + nombreCal).apply();
                     preferences.edit().putString("encuestados", userS + usuario).apply();
                     finish();
